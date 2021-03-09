@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 
 var selected = null
@@ -10,4 +10,4 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if (Input.)
+	pass
