@@ -1,9 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://EnemyShip.tscn" type="PackedScene" id=1]
 [ext_resource path="res://PlayerShip.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Main.gd" type="Script" id=3]
 [ext_resource path="res://sprites/ui/nine_patch_1.png" type="Texture" id=4]
+[ext_resource path="res://Laser.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Background.gd" type="Script" id=6]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 1.09375, 1.0625, 0, 0, 0, 0, 380.911, 0.948471, 0, 0, 0, 0, 381.006, 558.804, 0, 0, 0, 0, 1.19531, 558.632, 0, 0, 0, 0, 1.0625, 1.03125 )
+}
 
 [node name="Main" type="Node"]
 script = ExtResource( 3 )
@@ -36,6 +43,8 @@ patch_margin_left = 2
 patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
+script = ExtResource( 6 )
+Projectile = ExtResource( 5 )
 
 [node name="CenterContainer" type="CenterContainer" parent="EnemyContainer/Background"]
 margin_right = 40.0
@@ -46,3 +55,10 @@ __meta__ = {
 
 [node name="EnemyShip" parent="EnemyContainer/Background/CenterContainer" instance=ExtResource( 1 )]
 position = Vector2( -74.3613, 92.5226 )
+
+[node name="ProjectileSpawnPath" type="Path2D" parent="EnemyContainer/Background"]
+curve = SubResource( 1 )
+
+[node name="ProjectileSpawn" type="PathFollow2D" parent="EnemyContainer/Background/ProjectileSpawnPath"]
+position = Vector2( 1.09375, 1.0625 )
+rotation = -0.000300206
