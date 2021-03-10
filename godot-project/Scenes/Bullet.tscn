@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Resources/Scripts/Bullet.gd" type="Script" id=1]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 1.34915
+height = 2.54948
+
+[node name="Bullet" type="KinematicBody2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+scale = Vector2( 5, 5 )
+color = Color( 0.768627, 0.0470588, 0.0470588, 1 )
+polygon = PoolVector2Array( -0.9375, -0.515625, 0.925781, -0.535156, 5.45156, 0.00398102, 0.898438, 0.539063, -0.867188, 0.5625, -5.16418, 0.00398102 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 0.0884888, 0.117983 )
+scale = Vector2( 0.230152, 0.132815 )
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

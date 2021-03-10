@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Resources/Scripts/CanvasLayer.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Fonts/Aerolite.otf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 2 )
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="Button" type="Button" parent="."]
+anchor_left = 0.114
+anchor_top = 0.914
+anchor_right = 0.114
+anchor_bottom = 0.914
+margin_left = -131.724
+margin_top = -32.4041
+margin_right = 132.276
+margin_bottom = 32.5959
+custom_fonts/font = SubResource( 1 )
+text = "Fire"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ViewportSprite" type="Sprite" parent="."]
+position = Vector2( 1280, 72 )
+scale = Vector2( 0.5, 0.5 )
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

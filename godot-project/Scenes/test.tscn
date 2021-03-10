@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Resources/Scripts/test.gd" type="Script" id=1]
+
+
+
+[node name="Polygon2D" type="Polygon2D"]
+scale = Vector2( 0.5, 0.5 )
+polygon = PoolVector2Array( -8.31614, -4.80177, 39.1079, -39.3175, 98.879, 17.6475, 34.618, 86.9595 )
+script = ExtResource( 1 )
