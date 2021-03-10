@@ -29,8 +29,11 @@ func _process(delta: float) -> void:
 
 [node name="TileMap" type="TileMap"]
 tile_set = ExtResource( 1 )
-cell_size = Vector2(32, 32)
+cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 32
 cell_custom_transform = Transform2D( 0, 0, 0, 0, 0, 0 )
 format = 1
 script = SubResource( 1 )
+animations = {
+
+}

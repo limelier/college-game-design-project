@@ -3,7 +3,6 @@
 [ext_resource path="res://ship_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Weapon.tscn" type="PackedScene" id=2]
 
-
 [node name="EnemyShip" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]

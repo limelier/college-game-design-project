@@ -11,7 +11,6 @@ onready var viewport_sprite = $HUD/ViewportSprite
 func _ready():
 	# We want Godot to load everything but be hidden for a bit.
 	viewport_sprite.modulate = Color(1, 1, 1, 0.01)
-	#warning-ignore:return_value_discarded
 	# get_viewport().connect("size_changed", self, "_root_viewport_size_changed")
 	viewport_initial_size = viewport.size
 

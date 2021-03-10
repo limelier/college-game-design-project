@@ -7,7 +7,7 @@ var velocity = Vector2()
 func start(pos, dir):
 	rotation = dir
 	global_position = pos
-	velocity = Vector2(speed, 0)
+	velocity = Vector2(speed, 0).rotated(dir)
 
 
 func _physics_process(delta):
@@ -23,9 +23,6 @@ func teleport():
 
 
 func _on_VisibilityNotifier2D_screen_exited():
+	emit_signal('shoot_enemy')	
 	queue_free()
-	emit_signal('shoot_enemy')
-	teleport()
-	# TO DO: spawn projectile on the enemy side
-
 
