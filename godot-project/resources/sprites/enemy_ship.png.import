@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/floor_1_damaged.png-1e072643c000a1b4cac81c58445c0180.stex"
+path="res://.import/enemy_ship.png-ec22e9c4f1033ade0a65cb4ad0a26a67.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/tiles/floor_1_damaged.png"
-dest_files=[ "res://.import/floor_1_damaged.png-1e072643c000a1b4cac81c58445c0180.stex" ]
+source_file="res://resources/sprites/enemy_ship.png"
+dest_files=[ "res://.import/enemy_ship.png-ec22e9c4f1033ade0a65cb4ad0a26a67.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

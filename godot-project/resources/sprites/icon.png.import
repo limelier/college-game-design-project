@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/nine_patch_1.png-2ab523dad7d94e7e9f1576ccfe9ba3a4.stex"
+path="res://.import/icon.png-8f1e90a5dd3592665304aa3823f1de88.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ui/nine_patch_1.png"
-dest_files=[ "res://.import/nine_patch_1.png-2ab523dad7d94e7e9f1576ccfe9ba3a4.stex" ]
+source_file="res://resources/sprites/icon.png"
+dest_files=[ "res://.import/icon.png-8f1e90a5dd3592665304aa3823f1de88.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
