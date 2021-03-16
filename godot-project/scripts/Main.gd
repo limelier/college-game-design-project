@@ -12,6 +12,7 @@ func _on_EnemySpawnTimer_timeout():
 	$EnemySpawnPath/EnemySpawn.offset = randi()
 	var enemy = Enemy.instance()
 	add_child(enemy)
+	enemy.connect("death", self, "_on_Enemy_death")
 	enemy.position = $EnemySpawnPath/EnemySpawn.position
 	
 	var direction = $EnemySpawnPath/EnemySpawn.rotation + PI / 2
@@ -21,4 +22,7 @@ func _on_EnemySpawnTimer_timeout():
 
 
 func _on_Player_health_updated(health):
-	$Health.text = str(health)
+	$CanvasLayer/HUD.update_health(health)
+
+func _on_Enemy_death(score_value):
+	$CanvasLayer/HUD.add_score(score_value)

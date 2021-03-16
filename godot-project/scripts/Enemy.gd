@@ -11,6 +11,9 @@ var screen_size
 var down_accel = 20
 var down_min_speed = 50
 
+var score_value = 10
+signal death
+
 func _ready():
 	$BulletTimer.wait_time = rand_range(1.0, 3.0)
 	screen_size = get_viewport_rect().size
@@ -45,4 +48,5 @@ func _on_BulletTimer_timeout():
 func damage(amount):
 	health -= amount
 	if health <= 0:
+		emit_signal("death", score_value)
 		queue_free()

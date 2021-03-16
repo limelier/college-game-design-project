@@ -1,11 +1,13 @@
 extends MarginContainer
 
+var score = 0
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$HBoxContainer/ScoreLabel.text = str(score)
 
+func update_health(value):
+	$HBoxContainer/HealthContainer/HealthBarCenterer/HealthBar.value = value
 
-func _on_Player_health_updated(value):
-	$HBoxContainer/HealthContainer/HealthBar.value = value
+func add_score(value):
+	score += value
+	$HBoxContainer/ScoreLabel.text = str(score)
