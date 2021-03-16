@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://resources/sprites/health_bar_mid.png" type="Texture" id=1]
+[ext_resource path="res://resources/sprites/health_bar_bg.png" type="Texture" id=2]
+[ext_resource path="res://resources/arial.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://scenes/HUD.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+outline_size = 1
+outline_color = Color( 0.133333, 0.113725, 0.266667, 1 )
+font_data = ExtResource( 3 )
+
+[node name="HUD" type="MarginContainer"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -36.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 690.0
+margin_bottom = 34.0
+size_flags_vertical = 0
+alignment = 1
+
+[node name="HealthLabel" type="Label" parent="HBoxContainer"]
+margin_left = 196.0
+margin_right = 223.0
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 1 )
+text = "HP"
+
+[node name="HealthContainer" type="CenterContainer" parent="HBoxContainer"]
+margin_left = 227.0
+margin_right = 483.0
+margin_bottom = 24.0
+size_flags_vertical = 3
+
+[node name="HealthBar" type="TextureProgress" parent="HBoxContainer/HealthContainer"]
+margin_top = 4.0
+margin_right = 256.0
+margin_bottom = 20.0
+size_flags_stretch_ratio = 0.0
+value = 100.0
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 1 )
