@@ -1,12 +1,14 @@
 extends RigidBody2D
 
+class_name Enemy
+
 export var min_speed = 100
 export var max_speed = 300
 
 export (PackedScene) var Bullet
 
 var health
-var damage 
+var projectile_damage 
 var screen_size
 var down_accel 
 var down_min_speed 
@@ -14,9 +16,10 @@ var down_min_speed
 var score_value = 10
 signal death
 
+
 func _init(Health,Damage,Accel,MinSpeed):
 	health=Health
-	damage=Damage
+	projectile_damage=Damage
 	down_accel=Accel
 	down_min_speed=MinSpeed
 

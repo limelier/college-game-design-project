@@ -1,16 +1,17 @@
 extends RigidBody2D
 
-export var min_speed = 100
-export var max_speed = 150
+export var min_speed = 20
+export var max_speed = 80
 
 export (PackedScene) var Bullet
 
 var health = 70
 var damage = 20
 var screen_size
-var down_accel = 5
-var down_min_speed = 10
+var down_accel = 2
+var down_min_speed = 60
 
+var sgn =1
 var score_value = 1000
 signal death
 
@@ -19,7 +20,12 @@ func _ready():
 	screen_size = get_viewport_rect().size
 
 func _physics_process(delta):
-	# bounce enemy at edge of screen
+	if position.y<screen_size.y/4 and sgn==-1:
+		linear_velocity.y += down_accel*sgn
+		sgn=1
+	if position.y>screen_size.y/2 and sgn==1 :
+		linear_velocity.y += down_accel*sgn
+		sgn=-1
 	if position.x < 0 or position.x >= screen_size.x:
 		linear_velocity.x = -linear_velocity.x
 		position += linear_velocity * delta
@@ -29,13 +35,15 @@ func _physics_process(delta):
 		linear_velocity.x = sign(linear_velocity.x) * 5
 	
 	# accelerate enemy if not going down
-	if linear_velocity.y < down_min_speed:
-		linear_velocity.y += down_accel
+	if abs(linear_velocity.y) < down_min_speed:
+		linear_velocity.y += down_accel*sgn
 	
-	if position.y>screen_size.y/2 and linear_velocity.y>0:
-		linear_velocity.y -= down_accel
-	if linear_velocity.y<0:
-		linear_velocity.y=0
+		
+	#if position.y>screen_size.y/2 :
+	#	linear_velocity.y = (-1)*down_accel*2
+
+	
+	
 	
 
 func _on_VisibilityNotifier2D_screen_exited():
