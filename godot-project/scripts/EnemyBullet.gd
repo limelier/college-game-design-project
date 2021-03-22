@@ -13,7 +13,11 @@ func _process(delta):
 
 
 func _on_VisibilityNotifier2D_screen_exited():
+<<<<<<< Updated upstream
 	self.queue_free()
+=======
+	self.free()
+>>>>>>> Stashed changes
 	print("enemy bullet out of screen")
 
 

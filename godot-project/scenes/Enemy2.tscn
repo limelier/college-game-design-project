@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/EnemyDualWield.gd" type="Script" id=1]
+[ext_resource path="res://resources/sprites/Picture1.png" type="Texture" id=2]
+[ext_resource path="res://scenes/EnemyBullet.tscn" type="PackedScene" id=3]
+
+[node name="Enemy2" type="RigidBody2D"]
+collision_layer = 2147483648
+collision_mask = 3
+gravity_scale = 0.0
+script = ExtResource( 1 )
+Bullet = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 0.749146 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( -2.25863, 12.7534 )
+scale = Vector2( 1.29762, 1.19634 )
+polygon = PoolVector2Array( -33, -33, 32.25, -32.25, 33.0955, 9.92552, -32.25, 9 )
+
+[node name="BulletTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="BulletSpawn" type="Position2D" parent="."]
+position = Vector2( -42.2976, 20.9867 )
+
+[node name="BulletSpawn2" type="Position2D" parent="."]
+position = Vector2( 37.7024, 20.9867 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -1.60827, -0.668925 )
+scale = Vector2( 4.84522, 3.26827 )
+[connection signal="timeout" from="BulletTimer" to="." method="_on_BulletTimer_timeout"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
