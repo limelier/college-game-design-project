@@ -1,17 +1,17 @@
 extends RigidBody2D
 
 export var min_speed = 100
-export var max_speed = 300
+export var max_speed = 150
 
 export (PackedScene) var Bullet
 
-var health = 20
-var damage = 30
+var health = 40
+var damage = 20
 var screen_size
-var down_accel = 20
-var down_min_speed = 50
+var down_accel = 5
+var down_min_speed = 10
 
-var score_value = 10
+var score_value = 100
 signal death
 
 func _ready():
@@ -35,14 +35,18 @@ func _physics_process(delta):
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
-	print("Enemy out of screen")
+
 
 func _on_BulletTimer_timeout():
 	$BulletTimer.wait_time = rand_range(1.0, 3.0)
 	
-	var bullet = Bullet.instance()
-	get_parent().add_child(bullet)
-	bullet.position = $BulletSpawn.global_position
+	var bullet1 = Bullet.instance()
+	get_parent().add_child(bullet1)
+	bullet1.position = $BulletSpawn.global_position
+	
+	var bullet2 = Bullet.instance()
+	get_parent().add_child(bullet2)
+	bullet2.position = $BulletSpawn2.global_position
 
 
 func damage(amount):

@@ -5,14 +5,20 @@ export var max_speed = 300
 
 export (PackedScene) var Bullet
 
-var health = 20
-var damage = 30
+var health
+var damage 
 var screen_size
-var down_accel = 20
-var down_min_speed = 50
+var down_accel 
+var down_min_speed 
 
 var score_value = 10
 signal death
+
+func _init(Health,Damage,Accel,MinSpeed):
+	health=Health
+	damage=Damage
+	down_accel=Accel
+	down_min_speed=MinSpeed
 
 func _ready():
 	$BulletTimer.wait_time = rand_range(1.0, 3.0)
@@ -35,7 +41,7 @@ func _physics_process(delta):
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
-	print("Enemy out of screen")
+
 
 func _on_BulletTimer_timeout():
 	$BulletTimer.wait_time = rand_range(1.0, 3.0)
