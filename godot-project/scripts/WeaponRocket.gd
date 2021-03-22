@@ -17,7 +17,7 @@ func _ready():
 func update_level(level):
 	.update_level(level)
 	# 100%, 8/9, 8/10, 8/11, ...
-	$Cooldown.wait_time = init_cooldown * (8.0 / (8.0 + level))
+	$Cooldown.wait_time = init_cooldown * (8.0 / (8.0 + level - 1))
 	var factor = 1.0 + float(level - 1) / 5.0
 	damage = factor * init_damage
 	accel = factor * init_accel

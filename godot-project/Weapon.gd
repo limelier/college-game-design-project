@@ -4,10 +4,6 @@ export (PackedScene) var Projectile
 export (int) var level = 1
 
 
-func _ready():
-	update_level(level)
-
-
 func update_level(level):
 	self.level = level
 

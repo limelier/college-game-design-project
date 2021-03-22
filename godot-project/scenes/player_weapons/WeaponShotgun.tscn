@@ -4,7 +4,7 @@
 [ext_resource path="res://scenes/player_weapons/Weapon.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/player_bullets/PlayerProjPellet.tscn" type="PackedScene" id=3]
 
-[node name="Weapon" instance=ExtResource( 2 )]
+[node name="WeaponShotgun" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
 Projectile = ExtResource( 3 )
 

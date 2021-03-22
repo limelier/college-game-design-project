@@ -3,6 +3,9 @@ extends "res://Weapon.gd"
 var pellets
 export (float) var spread = PI / 6
 
+func _ready():
+	update_level(level)
+
 func update_level(level):
 	.update_level(level)
 	pellets = 2 + level
