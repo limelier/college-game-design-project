@@ -8,4 +8,4 @@ func _process(delta):
 	
 	if speed < max_speed:
 		speed += delta * acceleration
-		velocity = Vector2.UP * speed
+		velocity = velocity.normalized() * speed

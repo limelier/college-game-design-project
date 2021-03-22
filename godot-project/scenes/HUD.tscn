@@ -5,6 +5,8 @@
 [ext_resource path="res://resources/HUD_font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://scenes/HUD.gd" type="Script" id=4]
 
+
+
 [node name="HUD" type="MarginContainer"]
 anchor_left = 0.5
 anchor_right = 0.5

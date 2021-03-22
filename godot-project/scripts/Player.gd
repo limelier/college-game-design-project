@@ -24,9 +24,8 @@ func _process(delta):
 	position += velocity * delta
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
-
-func _input(event):
-	if Input.is_action_just_pressed("fire"):
+	
+	if Input.is_action_pressed("fire"):
 		$Weapon.fire($BulletSpawn, get_parent())
 
 

@@ -1,10 +1,16 @@
 extends Node
 
 export (PackedScene) var Projectile
+export (int) var level = 1
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
-	pass # Replace with function body.
+	update_level(level)
+
+
+func update_level(level):
+	self.level = level
+
 
 func spawn(bullet_spawn, parent):
 	var projectile = Projectile.instance()

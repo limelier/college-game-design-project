@@ -1,7 +1,12 @@
 extends "res://Weapon.gd"
 
-export (int) var pellets = 3
+var pellets
 export (float) var spread = PI / 6
+
+func update_level(level):
+	.update_level(level)
+	pellets = 2 + level
+	spread = PI / 6 * (1 + .1 * level)
 
 func spawn(bullet_spawn, parent):
 	var spread_between = spread / (pellets - 1)
