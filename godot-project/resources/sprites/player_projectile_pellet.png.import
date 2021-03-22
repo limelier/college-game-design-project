@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player_projectile.png-1b5536decd6ccb0d2bd70f7a06394612.stex"
+path="res://.import/player_projectile_pellet.png-6a892caadbc03be4926c89789814229b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/sprites/player_projectile.png"
-dest_files=[ "res://.import/player_projectile.png-1b5536decd6ccb0d2bd70f7a06394612.stex" ]
+source_file="res://resources/sprites/player_projectile_pellet.png"
+dest_files=[ "res://.import/player_projectile_pellet.png-6a892caadbc03be4926c89789814229b.stex" ]
 
 [params]
 

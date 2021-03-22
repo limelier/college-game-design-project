@@ -1,6 +1,5 @@
 extends Area2D
 
-export (PackedScene) var Projectile
 const movement_speed = 400
 var screen_size
 var health = 100
@@ -27,11 +26,8 @@ func _process(delta):
 	position.y = clamp(position.y, 0, screen_size.y)
 
 func _input(event):
-	if Input.is_action_just_pressed("fire") and $BulletCooldown.is_stopped():
-		$BulletCooldown.start()
-		var projectile = Projectile.instance()
-		get_parent().add_child(projectile)
-		projectile.position = $BulletSpawn.global_position
+	if Input.is_action_just_pressed("fire"):
+		$Weapon.fire($BulletSpawn, get_parent())
 
 
 func damage(amount):

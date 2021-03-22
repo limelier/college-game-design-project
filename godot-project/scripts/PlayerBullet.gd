@@ -1,11 +1,11 @@
 extends Area2D
 
 var velocity = Vector2()
-const speed = 500
-const damage = 10
+export var speed = 500
+export var damage = 10
 
 func _ready():
-	velocity = Vector2.UP * speed
+	velocity = Vector2.UP.rotated(rotation) * speed
 
 
 func _process(delta):
