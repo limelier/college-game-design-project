@@ -6,6 +6,7 @@ var score = 0
 
 func _ready():
 	$Display/HBoxContainer/ScoreLabel.text = str(score)
+	$ExitButton.hide()
 
 func update_health(value):
 	$Display/HBoxContainer/HealthContainer/HealthBarCenterer/HealthBar.value = value
@@ -23,20 +24,18 @@ func show_message(text):
 	$MessageTimer.start()
 	
 func show_game_over():
-	show_message('Game Over')
-	yield($MessageTimer, 'timeout')
-	
-	$Message.text = 'Placeholder!'
+	#show_message('Game Over')
+	$Message.text = 'Game Over'
 	$Message.show()
-	
-	yield(get_tree().create_timer(1), 'timeout')
-	$StartButton.show()
+	# yield($MessageTimer, 'timeout')
+	# yield(get_tree().create_timer(1), 'timeout')
+	$ExitButton.show()
+
+
+
+func _on_ExitButton_pressed():
+	get_tree().change_scene("res://scenes/Menu.tscn")
 
 
 func _on_MessageTimer_timeout():
 	$Message.hide()
-
-
-func _on_StartButton_pressed():
-	$StartButton.hide()
-	emit_signal('start_game')
