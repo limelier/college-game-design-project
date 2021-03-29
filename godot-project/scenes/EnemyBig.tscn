@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://scripts/EnemyBig.gd" type="Script" id=1]
+[ext_resource path="res://scripts/EnemyTypeBIG.gd" type="Script" id=1]
 [ext_resource path="res://resources/sprites/PotentialBoss.png" type="Texture" id=2]
 [ext_resource path="res://scenes/EnemyBullet.tscn" type="PackedScene" id=3]
 
@@ -25,6 +25,9 @@ polygon = PoolVector2Array( -33, -33, 32.0512, -32.4082, 33.0955, 9.92552, -32.2
 [node name="BulletTimer" type="Timer" parent="."]
 autostart = true
 
+[node name="BulletTimer2" type="Timer" parent="."]
+autostart = true
+
 [node name="BulletSpawn" type="Position2D" parent="."]
 position = Vector2( -19.2976, 63.9867 )
 
@@ -35,4 +38,5 @@ position = Vector2( 10.7024, 63.9867 )
 position = Vector2( 2.19723, -2.52225 )
 scale = Vector2( 7.71415, 6.93647 )
 [connection signal="timeout" from="BulletTimer" to="." method="_on_BulletTimer_timeout"]
+[connection signal="timeout" from="BulletTimer2" to="." method="_on_BulletTimer2_timeout"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

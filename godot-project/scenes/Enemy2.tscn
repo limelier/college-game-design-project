@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://scripts/EnemyDualWield.gd" type="Script" id=1]
+[ext_resource path="res://scripts/EnemyType2.gd" type="Script" id=1]
 [ext_resource path="res://resources/sprites/Picture1.png" type="Texture" id=2]
 [ext_resource path="res://scenes/EnemyBullet.tscn" type="PackedScene" id=3]
 
@@ -9,6 +9,8 @@ collision_layer = 2147483648
 collision_mask = 3
 gravity_scale = 0.0
 script = ExtResource( 1 )
+min_speed = 60
+max_speed = 200
 Bullet = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
