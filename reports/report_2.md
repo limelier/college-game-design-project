@@ -12,3 +12,5 @@ I've started working on adding more weapons to the game, starting with:
 ## Suruniuc Constantin
 
 ## Stefanica Catalin
+Created an enemy class.
+Derived 2 other types of enemies with same stats, only different movement.
