@@ -6,9 +6,17 @@ var screen_size
 var health = 100
 
 signal health_updated
+signal health_zero
+
+
+func start(pos):
+	position = pos
+	emit_signal("health_updated", health)
+	show()
 
 func _ready():
 	screen_size = get_viewport_rect().size
+	hide()
 
 func _process(delta):
 	var velocity = Vector2()  # The player's movement vector.
@@ -27,7 +35,7 @@ func _process(delta):
 	position.y = clamp(position.y, 0, screen_size.y)
 
 func _input(event):
-	if Input.is_action_just_pressed("fire") and $BulletCooldown.is_stopped():
+	if Input.is_action_just_pressed("fire") and $BulletCooldown.is_stopped() and is_visible():
 		$BulletCooldown.start()
 		var projectile = Projectile.instance()
 		get_parent().add_child(projectile)
@@ -42,7 +50,9 @@ func damage(amount):
 		health = 0
 	
 	if health == 0:
-		queue_free()
+		emit_signal("health_zero")
+		hide()
+		health = 100
 
 
 func _on_Player_body_entered(body):

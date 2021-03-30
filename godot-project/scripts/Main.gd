@@ -5,6 +5,7 @@ export (PackedScene) var Enemy
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	new_game()
 	randomize()
 
 
@@ -22,7 +23,24 @@ func _on_EnemySpawnTimer_timeout():
 
 
 func _on_Player_health_updated(health):
-	$CanvasLayer/HUD.update_health(health)
+	$HUD.update_health(health)
 
 func _on_Enemy_death(score_value):
-	$CanvasLayer/HUD.add_score(score_value)
+	$HUD.add_score(score_value)
+
+
+func new_game():
+	$Player.start($StartPosition.position)
+	$StartTimer.start()
+	$HUD.reset_score()
+	$HUD.show_message('Get Ready')
+
+
+func _on_StartTimer_timeout():
+	$EnemySpawnTimer.start()
+
+
+func game_over():
+	$EnemySpawnTimer.stop()
+	$HUD.show_game_over()
+	get_tree().call_group('Enemies', 'queue_free')
