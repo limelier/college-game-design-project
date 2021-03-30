@@ -1,4 +1,4 @@
-extends "res://Weapon.gd"
+extends "res://scripts/Weapon.gd"
 
 var pellets
 export (float) var spread = PI / 6

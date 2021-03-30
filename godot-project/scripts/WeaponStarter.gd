@@ -1,4 +1,4 @@
-extends "res://Weapon.gd"
+extends "res://scripts/Weapon.gd"
 
 var init_cooldown = $Cooldown.wait_time
 
