@@ -43,12 +43,6 @@ func _process(delta):
 		selected_weapon = (selected_weapon + 1) % $Weapons.get_child_count()
 		weapon = $Weapons.get_child(selected_weapon)
 
-func _input(event):
-	if Input.is_action_just_pressed("fire") and $BulletCooldown.is_stopped() and is_visible():
-		$BulletCooldown.start()
-		var projectile = Projectile.instance()
-		get_parent().add_child(projectile)
-		projectile.position = $BulletSpawn.global_position
 
 func damage(amount):
 	health -= amount
