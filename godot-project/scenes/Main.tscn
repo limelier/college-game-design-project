@@ -36,6 +36,7 @@ one_shot = true
 [node name="StartPosition" type="Position2D" parent="."]
 position = Vector2( 347.756, 884.393 )
 [connection signal="health_updated" from="Player" to="." method="_on_Player_health_updated"]
+[connection signal="weapon_changed" from="Player" to="." method="_on_Player_weapon_changed"]
 [connection signal="health_zero" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_EnemySpawnTimer_timeout"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]

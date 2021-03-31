@@ -3,7 +3,6 @@
 [ext_resource path="res://resources/arial.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 20
 outline_size = 1
 outline_color = Color( 0.133333, 0.113725, 0.266667, 1 )
 font_data = ExtResource( 1 )

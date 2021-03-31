@@ -8,6 +8,7 @@ var weapon
 
 signal health_updated
 signal health_zero
+signal weapon_changed
 
 
 func start(pos):
@@ -19,6 +20,7 @@ func _ready():
 	screen_size = get_viewport_rect().size
 	weapon = $Weapons.get_child(selected_weapon)
 	hide()
+	change_weapon(0)
 
 func _process(delta):
 	var velocity = Vector2()  # The player's movement vector.
@@ -40,9 +42,14 @@ func _process(delta):
 		weapon.fire($BulletSpawn, get_parent())
 		
 	if Input.is_action_just_pressed("cycle_weapon"):
-		selected_weapon = (selected_weapon + 1) % $Weapons.get_child_count()
-		weapon = $Weapons.get_child(selected_weapon)
+		change_weapon()
 
+func change_weapon(index = null):
+	if index == null:
+		index = (selected_weapon + 1) % $Weapons.get_child_count()
+	selected_weapon = index
+	weapon = $Weapons.get_child(selected_weapon)
+	emit_signal("weapon_changed", weapon)
 
 func damage(amount):
 	health -= amount

@@ -29,6 +29,10 @@ func _on_Enemy_death(score_value):
 	$HUD.add_score(score_value)
 
 
+func _on_Player_weapon_changed(weapon):
+	$CanvasLayer/HUD.change_weapon(weapon)
+
+
 func new_game():
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
