@@ -30,7 +30,7 @@ func _on_Enemy_death(score_value):
 
 
 func _on_Player_weapon_changed(weapon):
-	$CanvasLayer/HUD.change_weapon(weapon)
+	$HUD.change_weapon(weapon)
 
 
 func new_game():
