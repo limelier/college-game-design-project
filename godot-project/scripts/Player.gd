@@ -3,11 +3,14 @@ extends Area2D
 const movement_speed = 400
 var screen_size
 var health = 100
+var selected_weapon = 0
+var weapon
 
 signal health_updated
 
 func _ready():
 	screen_size = get_viewport_rect().size
+	weapon = $Weapons.get_child(selected_weapon)
 
 func _process(delta):
 	var velocity = Vector2()  # The player's movement vector.
@@ -26,7 +29,11 @@ func _process(delta):
 	position.y = clamp(position.y, 0, screen_size.y)
 	
 	if Input.is_action_pressed("fire"):
-		$Weapon.fire($BulletSpawn, get_parent())
+		weapon.fire($BulletSpawn, get_parent())
+		
+	if Input.is_action_just_pressed("cycle_weapon"):
+		selected_weapon = (selected_weapon + 1) % $Weapons.get_child_count()
+		weapon = $Weapons.get_child(selected_weapon)
 
 
 func damage(amount):
