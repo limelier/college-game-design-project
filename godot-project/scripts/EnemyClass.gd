@@ -30,8 +30,8 @@ func _physics_process(delta):
 		linear_velocity.x = abs(linear_velocity.x)*(-1) 
 		position += linear_velocity * delta
 	# speed up enemy laterally if not moving
-	if abs(linear_velocity.x) < 80:
-		linear_velocity.x += sign(linear_velocity.x)*20
+	if abs(linear_velocity.x) < 40:
+		linear_velocity.x += sign(linear_velocity.x)*10
 	
 	# accelerate enemy if not going down
 	if linear_velocity.y < down_min_speed:
