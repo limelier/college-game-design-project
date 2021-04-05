@@ -22,7 +22,6 @@ func _physics_process(delta):
 		sgn=-1
 		linear_velocity.y += down_accel*sgn
 
-		print("Big enemy close to player")
 	if position.x < 0 or position.x >= screen_size.x:
 		linear_velocity.x = -linear_velocity.x
 		position += linear_velocity * delta

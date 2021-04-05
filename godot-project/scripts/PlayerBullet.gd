@@ -14,7 +14,7 @@ func _process(delta):
 
 func _on_VisibilityNotifier2D_screen_exited():
 	self.queue_free()
-	print("FriendlyBullet out of screen")
+
 
 func _on_PlayerBullet_body_entered(body):
 	if body.has_method("damage"):

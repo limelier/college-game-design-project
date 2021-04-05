@@ -16,7 +16,6 @@ func spawn_line_group():
 	#$EnemySpawnPath/EnemySpawn.offset = type
 	$EnemySpawnPath/EnemySpawn.offset = randi()
 	var position=$EnemySpawnPath/EnemySpawn.position
-	print("in function")
 	for i in range(0,4):	
 		spawn_enemy(2,Vector2(position.x+i*40,7+i*20),50,direction)
 	
@@ -40,8 +39,7 @@ func spawn_V_group():
 	#$EnemySpawnPath/EnemySpawn.offset = type
 	var screen_size=get_viewport().size
 	spawn_enemy(1,Vector2(screen_size.x/2,7),70,direction)
-	print(screen_size)
-	for i in range(1,3):	
+	for i in range(1,3):		
 		spawn_enemy(2,Vector2(screen_size.x/2 + i*40,7 + i*20),70,direction)
 		spawn_enemy(2,Vector2(screen_size.x/2 - i*40,7 + i*20),70,direction)
 	
