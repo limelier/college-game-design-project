@@ -1,12 +1,6 @@
-extends Node
+extends "res://scripts/Event.gd"
 
 
-export (PackedScene) var Enemy
-export (PackedScene) var Enemy2
-export (PackedScene) var EnemyBig
-
-
-var temp =0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	new_game()
@@ -14,9 +8,26 @@ func _ready():
 
 
 func _on_EnemySpawnTimer_timeout():
+	
+	var temp=randi()
+	if temp%4==0:
+		self.spawn_V_group()
+	elif temp%4==1:
+		self.spawn_Random_enemy()
+	elif temp%4==2:
+		self.spawn_Square_group()
+	else:
+		self.spawn_line_group()
+	
+	#self.spawn_V_group()
+	#self.spawn_line_group()
+	#self.spawn_Square_group()
+	
+func tmep():
 	var type= randi()
 	$EnemySpawnPath/EnemySpawn.offset = randi()
 	var enemy
+	var temp
 	if type%3==0 and temp==0:
 		enemy = EnemyBig.instance()
 		temp=1
@@ -34,7 +45,6 @@ func _on_EnemySpawnTimer_timeout():
 	direction += rand_range(-PI / 4, PI / 4)
 	
 	enemy.linear_velocity = Vector2(rand_range(enemy.min_speed, enemy.max_speed), 0).rotated(direction)
-	
 	
 	
 

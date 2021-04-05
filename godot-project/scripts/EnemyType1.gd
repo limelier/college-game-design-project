@@ -6,7 +6,7 @@ func  _init():
 	damage = 30
 	screen_size
 	down_accel = 20
-	down_min_speed = 50
+	down_min_speed = 30
 	score_value=10
 
 
