@@ -10,14 +10,23 @@ func _ready():
 func _on_EnemySpawnTimer_timeout():
 	
 	var temp=randi()
-	if temp%4==0:
-		self.spawn_V_group()
-	elif temp%4==1:
-		self.spawn_Random_enemy()
-	elif temp%4==2:
-		self.spawn_Square_group()
+	var temp2=randi()
+	if temp2%2==0:
+		if temp%4==0:
+			self.spawn_V_group()
+			$EnemySpawnTimer.wait_time = rand_range(4.0, 5.0)
+		elif temp%4==1:
+			self.spawn_Random_enemy()
+			$EnemySpawnTimer.wait_time = rand_range(2.0, 3.0)
+		elif temp%4==2:
+			self.spawn_Square_group()
+			$EnemySpawnTimer.wait_time = rand_range(4.0, 5.0)
+		else:
+			self.spawn_line_group()
+			$EnemySpawnTimer.wait_time = rand_range(3.0, 4.0)
 	else:
-		self.spawn_line_group()
+		self.spawn_Random_enemy()
+		$EnemySpawnTimer.wait_time = rand_range(2.0, 3.0)
 	
 	#self.spawn_V_group()
 	#self.spawn_line_group()
