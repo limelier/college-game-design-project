@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://resources/sprites/nine_patch.png" type="Texture" id=1]
+[ext_resource path="res://resources/sprites/player_projectile.png" type="Texture" id=2]
+[ext_resource path="res://resources/HUD_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://scenes/WeaponDisplay.gd" type="Script" id=4]
+
+[node name="WeaponDisplay" type="MarginContainer"]
+margin_right = 67.0
+margin_bottom = 26.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="NinePatchRect" parent="."]
+margin_right = 67.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 67, 26 )
+texture = ExtResource( 1 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Projectile" type="TextureRect" parent="Background"]
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_right = 25.0
+texture = ExtResource( 2 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Level" type="Label" parent="Background"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -42.0
+margin_top = -9.0
+margin_right = -6.0
+margin_bottom = 10.0
+custom_fonts/font = ExtResource( 3 )
+text = "0"
+align = 2
+valign = 1
+percent_visible = -1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
