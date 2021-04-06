@@ -8,3 +8,5 @@ Merge the branches together into a prototype for week 8, solving some merge conf
 ## Suruniuc Constantin
 
 ## Stefanica Catalin
+Added groups of enemies.
+Modified the spawn rate so we get single enemies and group of enemies in a more balanced way.
