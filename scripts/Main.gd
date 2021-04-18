@@ -1,6 +1,8 @@
 extends "res://scripts/Event.gd"
 
 
+onready var Player = preload("res://scenes/Player.tscn")
+var two_players = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	new_game()
@@ -83,3 +85,12 @@ func game_over():
 	$EnemySpawnTimer.stop()
 	$HUD.show_game_over()
 	get_tree().call_group('Enemies', 'queue_free')
+
+func _process(delta):
+	if Input.is_action_pressed("p2_fire") and not two_players:
+		var player_2 = Player.instance()
+		player_2.player = 1
+		add_child(player_2)
+		player_2.start($StartPositionP2.position)
+		two_players = true
+		

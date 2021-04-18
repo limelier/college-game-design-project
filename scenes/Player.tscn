@@ -7,6 +7,7 @@
 [ext_resource path="res://scenes/player_weapons/WeaponStarter.tscn" type="PackedScene" id=5]
 
 [node name="Player" type="Area2D"]
+collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]

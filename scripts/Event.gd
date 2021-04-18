@@ -8,6 +8,7 @@ export (PackedScene) var EnemyBig
 
 
 
+
 func spawn_line_group():
 	var direction = $EnemySpawnPath/EnemySpawn.rotation + PI / 2
 	direction += rand_range(-PI / 4, PI / 4)
