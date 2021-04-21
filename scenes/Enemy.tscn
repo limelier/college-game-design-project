@@ -19,7 +19,7 @@ texture = ExtResource( 1 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( -1, 0 )
-polygon = PoolVector2Array( 1.22083, -22.8448, -16.0733, -8.79814, -14.9495, 10.8671, 0.846252, 29.2214, 16.1403, 10.118, 15.7658, -9.54729 )
+polygon = PoolVector2Array( 1.22083, -22.8448, -26.25, 2.5, -14.9495, 10.8671, 0.846252, 29.2214, 16.1403, 10.118, 28.75, 1.5 )
 
 [node name="BulletTimer" type="Timer" parent="."]
 autostart = true
