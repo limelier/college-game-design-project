@@ -7,9 +7,18 @@ var score = 0
 func _ready():
 	$Display/Rows/FirstRow/ScoreLabel.text = str(score)
 	$ExitButton.hide()
+	$Display/Rows/FirstRow/HealthContainer2.hide()
+	$Display/Rows/SecondRow/WeaponDisplay2.hide()
 
-func update_health(value):
-	$Display/Rows/FirstRow/HealthContainer/HealthBarCenterer/HealthBar.value = value
+func show_p2():
+	$Display/Rows/FirstRow/HealthContainer2.show()
+	$Display/Rows/SecondRow/WeaponDisplay2.show()
+	
+func update_health(value, player):
+	if player == 0:
+		$Display/Rows/FirstRow/HealthContainer/HealthBarCenterer/HealthBar.value = value
+	else:
+		$Display/Rows/FirstRow/HealthContainer2/HealthBarCenterer/HealthBar.value = value
 
 func add_score(value):
 	score += value
@@ -37,5 +46,8 @@ func _on_ExitButton_pressed():
 func _on_MessageTimer_timeout():
 	$Message.hide()
 
-func change_weapon(weapon):
-	$Display/Rows/SecondRow/WeaponDisplay.update_weapon(weapon)
+func change_weapon(weapon, player):
+	if player == 0:
+		$Display/Rows/SecondRow/WeaponDisplay.update_weapon(weapon)
+	else:
+		$Display/Rows/SecondRow/WeaponDisplay2.update_weapon(weapon)

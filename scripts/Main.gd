@@ -3,6 +3,8 @@ extends "res://scripts/Event.gd"
 
 onready var Player = preload("res://scenes/Player.tscn")
 var two_players = false
+var player_count = 1
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	new_game()
@@ -60,18 +62,26 @@ func tmep():
 	
 
 func _on_Player_health_updated(health):
-	$HUD.update_health(health)
+	$HUD.update_health(health, 0)
 
 func _on_Enemy_death(score_value):
 	$HUD.add_score(score_value)
 
 
 func _on_Player_weapon_changed(weapon):
-	$HUD.change_weapon(weapon)
+	$HUD.change_weapon(weapon, 0)
+
+
+func _on_Player2_health_updated(health):
+	$HUD.update_health(health, 1)
+
+
+func _on_Player2_weapon_changed(weapon):
+	$HUD.change_weapon(weapon, 1)
 
 
 func new_game():
-	$Player.start($StartPosition.position)
+	$Player.start($StartPosition.position, $outside.position)
 	$StartTimer.start()
 	$HUD.reset_score()
 	$HUD.show_message('Get Ready')
@@ -82,15 +92,19 @@ func _on_StartTimer_timeout():
 
 
 func game_over():
-	$EnemySpawnTimer.stop()
-	$HUD.show_game_over()
-	get_tree().call_group('Enemies', 'queue_free')
+	player_count -= 1
+	if player_count == 0:
+		$EnemySpawnTimer.stop()
+		$HUD.show_game_over()
+		get_tree().call_group('Enemies', 'queue_free')
+		
 
 func _process(delta):
 	if Input.is_action_pressed("p2_fire") and not two_players:
-		var player_2 = Player.instance()
-		player_2.player = 1
-		add_child(player_2)
-		player_2.start($StartPositionP2.position)
+		$Player2.start($StartPositionP2.position, $outside.position, 1)
 		two_players = true
-		
+		player_count = 2
+		$HUD.show_p2()
+
+
+

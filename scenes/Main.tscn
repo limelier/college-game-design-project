@@ -21,6 +21,9 @@ EnemyBig = ExtResource( 6 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 347.289, 875.78 )
 
+[node name="Player2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1623.08, 1129.2 )
+
 [node name="EnemySpawnPath" type="Path2D" parent="."]
 position = Vector2( 0, -0.0157072 )
 scale = Vector2( 1, 1.0111 )
@@ -44,9 +47,15 @@ position = Vector2( 347.756, 884.393 )
 
 [node name="StartPositionP2" type="Position2D" parent="."]
 position = Vector2( 545.516, 881.133 )
+
+[node name="outside" type="Position2D" parent="."]
+position = Vector2( 1792, 1132 )
 [connection signal="health_updated" from="Player" to="." method="_on_Player_health_updated"]
 [connection signal="health_zero" from="Player" to="." method="game_over"]
 [connection signal="weapon_changed" from="Player" to="." method="_on_Player_weapon_changed"]
+[connection signal="health_updated" from="Player2" to="." method="_on_Player2_health_updated"]
+[connection signal="health_zero" from="Player2" to="." method="game_over"]
+[connection signal="weapon_changed" from="Player2" to="." method="_on_Player2_weapon_changed"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_EnemySpawnTimer_timeout"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]

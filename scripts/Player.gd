@@ -8,15 +8,27 @@ var damage = 0
 var weapon
 var inputs
 var player = 0
+var death_pos
 signal health_updated
 signal health_zero
 signal weapon_changed
 
 
-func start(pos):
+func start(pos, outside_pos, what_player = 0):
+	death_pos = outside_pos
+	player = what_player
+	update_controls()
 	position = pos
 	emit_signal("health_updated", health)
 	show()
+
+func update_controls():
+	if player == 0:
+		inputs = {'right': "ui_right", 'left': "ui_left", 'down': "ui_down", 
+		'up': "ui_up", 'fire': "fire", 'cycle_weapon': "cycle_weapon"}
+	elif player == 1:
+		inputs = {'right': "p2_right", 'left': "p2_left", 'down': "p2_down", 
+		'up': "p2_up", 'fire': "p2_fire", 'cycle_weapon': "p2_cycle_weapon"}
 
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -67,6 +79,7 @@ func take_damage(amount):
 		health = 0
 	
 	if health == 0:
+		position = death_pos
 		emit_signal("health_zero")
 		hide()
 		health = 100

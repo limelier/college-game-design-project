@@ -5,7 +5,6 @@
 [ext_resource path="res://resources/HUD_font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://scripts/WeaponDisplay.gd" type="Script" id=4]
 
-
 [node name="WeaponDisplay" type="MarginContainer"]
 margin_right = 67.0
 margin_bottom = 26.0
@@ -47,7 +46,6 @@ custom_fonts/font = ExtResource( 3 )
 text = "0"
 align = 2
 valign = 1
-percent_visible = -1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
