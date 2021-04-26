@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/EnemyType2.gd" type="Script" id=1]
-[ext_resource path="res://resources/sprites/Picture1.png" type="Texture" id=2]
+[ext_resource path="res://resources/sprites/enemy_1.png" type="Texture" id=2]
 [ext_resource path="res://scenes/EnemyBullet.tscn" type="PackedScene" id=3]
 
 [node name="Enemy2" type="RigidBody2D"]
@@ -21,19 +21,19 @@ texture = ExtResource( 2 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( -2.25863, 12.7534 )
 scale = Vector2( 1.29762, 1.19634 )
-polygon = PoolVector2Array( -33, -33, 32.25, -32.25, 33.0955, 9.92552, -32.25, 9 )
+polygon = PoolVector2Array( 1.54748, -43.3022, -23.3829, -37.6872, -39.1857, -5.62225, 1.41125, 31.7622, 43.643, -6.06554, 26.7503, -38.2782 )
 
 [node name="BulletTimer" type="Timer" parent="."]
 autostart = true
 
 [node name="BulletSpawn" type="Position2D" parent="."]
-position = Vector2( -42.2976, 20.9867 )
+position = Vector2( -52.7032, 14.0001 )
 
 [node name="BulletSpawn2" type="Position2D" parent="."]
-position = Vector2( 37.7024, 20.9867 )
+position = Vector2( 52.1215, 14.7434 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
-position = Vector2( -1.60827, -0.668925 )
-scale = Vector2( 4.84522, 3.26827 )
+position = Vector2( 0.159497, -2.87864 )
+scale = Vector2( 5.95891, 5.64592 )
 [connection signal="timeout" from="BulletTimer" to="." method="_on_BulletTimer_timeout"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
