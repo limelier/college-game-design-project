@@ -17,7 +17,6 @@ signal weapon_changed
 func start(pos, outside_pos, what_player = 0):
 	death_pos = outside_pos
 	player = what_player
-	update_controls()
 	position = pos
 	emit_signal("health_updated", health)
 	show()
@@ -35,34 +34,32 @@ func _ready():
 	weapon = $Weapons.get_child(selected_weapon)
 	hide()
 	change_weapon(0)
-	if player == 0:
-		inputs = {'right': "ui_right", 'left': "ui_left", 'down': "ui_down", 
-		'up': "ui_up", 'fire': "fire", 'cycle_weapon': "cycle_weapon"}
-	elif player == 1:
-		inputs = {'right': "p2_right", 'left': "p2_left", 'down': "p2_down", 
-		'up': "p2_up", 'fire': "p2_fire", 'cycle_weapon': "p2_cycle_weapon"}
+
+	inputs = {'right': "ui_right", 'left': "ui_left", 'down': "ui_down", 
+	'up': "ui_up", 'fire': "p2_fire", 'cycle_weapon': "p2_cycle_weapon"}
 
 func _process(delta):
-	var velocity = Vector2()  # The player's movement vector.
-	if Input.is_action_pressed(inputs['right']):
-		velocity.x += 1
-	if Input.is_action_pressed(inputs['left']):
-		velocity.x -= 1
-	if Input.is_action_pressed(inputs['down']):
-		velocity.y += 1
-	if Input.is_action_pressed(inputs['up']):
-		velocity.y -= 1
-	velocity = velocity.normalized() * movement_speed
-	
-	position += velocity * delta
-	position.x = clamp(position.x, 0, screen_size.x)
-	position.y = clamp(position.y, 0, screen_size.y)
-	
-	if Input.is_action_pressed(inputs['fire']):
-		weapon.fire($BulletSpawn, get_parent())
+	if visible:
+		var velocity = Vector2()  # The player's movement vector.
+		if Input.is_action_pressed(inputs['right']):
+			velocity.x += 1
+		if Input.is_action_pressed(inputs['left']):
+			velocity.x -= 1
+		if Input.is_action_pressed(inputs['down']):
+			velocity.y += 1
+		if Input.is_action_pressed(inputs['up']):
+			velocity.y -= 1
+		velocity = velocity.normalized() * movement_speed
 		
-	if Input.is_action_just_pressed(inputs['cycle_weapon']):
-		change_weapon()
+		position += velocity * delta
+		position.x = clamp(position.x, 0, screen_size.x)
+		position.y = clamp(position.y, 0, screen_size.y)
+		
+		if Input.is_action_pressed(inputs['fire']):
+			weapon.fire($BulletSpawn, get_parent())
+			
+		if Input.is_action_just_pressed(inputs['cycle_weapon']):
+			change_weapon()
 
 func change_weapon(index = null):
 	if index == null:

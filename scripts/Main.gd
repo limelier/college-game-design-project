@@ -100,8 +100,10 @@ func game_over():
 		
 
 func _process(delta):
-	if Input.is_action_pressed("p2_fire") and not two_players:
+	if Input.is_action_pressed("ui_accept") and not two_players:
 		$Player2.start($StartPositionP2.position, $outside.position, 1)
+		$Player2.update_controls()
+		$Player.update_controls()
 		two_players = true
 		player_count = 2
 		$HUD.show_p2()
