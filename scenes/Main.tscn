@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Main.gd" type="Script" id=2]
@@ -8,8 +8,9 @@
 [ext_resource path="res://scenes/EnemyBig.tscn" type="PackedScene" id=6]
 [ext_resource path="res://resources/sprites/background_base.png" type="Texture" id=7]
 [ext_resource path="res://resources/sprites/background_parallax.png" type="Texture" id=8]
+[ext_resource path="res://scenes/Player2.tscn" type="PackedScene" id=9]
 
-[sub_resource type="Shader" id=4]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 uniform float scroll_speed;
 
@@ -20,15 +21,15 @@ void fragment(){
     COLOR = color;
 }"
 
-[sub_resource type="ShaderMaterial" id=3]
-shader = SubResource( 4 )
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
 shader_param/scroll_speed = -0.005
 
-[sub_resource type="ShaderMaterial" id=5]
-shader = SubResource( 4 )
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 1 )
 shader_param/scroll_speed = -0.01
 
-[sub_resource type="Curve2D" id=1]
+[sub_resource type="Curve2D" id=4]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -1.0592, 541.131, 0, 0, 0, 0, 2.11554, 1.41453, 0, 0, 0, 0, 698.985, 6.17673, 0, 0, 0, 0, 695.81, 534.781, 0, 0, 0, 0, 694.222, 534.781 )
 }
@@ -40,7 +41,7 @@ Enemy2 = ExtResource( 5 )
 EnemyBig = ExtResource( 6 )
 
 [node name="StarBackground" type="TextureRect" parent="."]
-material = SubResource( 3 )
+material = SubResource( 2 )
 anchor_left = -0.25
 anchor_right = 0.75
 anchor_bottom = 1.0
@@ -54,7 +55,7 @@ __meta__ = {
 }
 
 [node name="ObjectBackground" type="TextureRect" parent="."]
-material = SubResource( 5 )
+material = SubResource( 3 )
 anchor_left = -0.25
 anchor_right = 0.75
 anchor_bottom = 1.0
@@ -70,13 +71,10 @@ __meta__ = {
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 347.289, 875.78 )
 
-[node name="Player2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1623.08, 1129.2 )
-
 [node name="EnemySpawnPath" type="Path2D" parent="."]
 position = Vector2( 0, -0.0157072 )
 scale = Vector2( 1, 1.0111 )
-curve = SubResource( 1 )
+curve = SubResource( 4 )
 
 [node name="EnemySpawn" type="PathFollow2D" parent="EnemySpawnPath"]
 position = Vector2( -1.0592, 541.131 )
@@ -100,12 +98,15 @@ position = Vector2( 545.516, 881.133 )
 [node name="outside" type="Position2D" parent="."]
 position = Vector2( 1792, 1132 )
 
+[node name="Player2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1658.52, 1116.24 )
+
 [connection signal="health_updated" from="Player" to="." method="_on_Player_health_updated"]
 [connection signal="health_zero" from="Player" to="." method="game_over"]
 [connection signal="weapon_changed" from="Player" to="." method="_on_Player_weapon_changed"]
-[connection signal="health_updated" from="Player2" to="." method="_on_Player2_health_updated"]
-[connection signal="health_zero" from="Player2" to="." method="game_over"]
-[connection signal="weapon_changed" from="Player2" to="." method="_on_Player2_weapon_changed"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_EnemySpawnTimer_timeout"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="health_updated" from="Player2" to="." method="_on_Player2_health_updated"]
+[connection signal="health_zero" from="Player2" to="." method="game_over"]
+[connection signal="weapon_changed" from="Player2" to="." method="_on_Player2_weapon_changed"]
