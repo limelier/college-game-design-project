@@ -11,7 +11,7 @@ func  _init():
 	screen_size
 	down_accel = 5
 	down_min_speed = 35
-	score_value=100
+	score_value=300
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

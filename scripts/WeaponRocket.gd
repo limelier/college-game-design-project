@@ -2,7 +2,7 @@ extends "res://scripts/Weapon.gd"
 
 var init_cooldown = $Cooldown.wait_time
 
-export (int) var init_damage = 20
+export (int) var init_damage = 30
 export (int) var init_accel = 150
 export (int) var init_max_speed = 1500
 

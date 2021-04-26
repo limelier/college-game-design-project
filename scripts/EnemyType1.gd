@@ -2,11 +2,11 @@ extends "res://scripts/EnemyClass.gd"
 
 
 func  _init():
-	health = 20
-	damage = 30
+	health = 15
+	damage = 20
 	screen_size
 	down_accel = 20
 	down_min_speed = 30
-	score_value=10
+	score_value=100
 
 

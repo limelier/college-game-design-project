@@ -9,7 +9,7 @@ height = 11.92
 
 [node name="PlayerBullet" instance=ExtResource( 2 )]
 speed = 600
-damage = 5
+damage = 8
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2( -0.0142155, -0.0255604 )

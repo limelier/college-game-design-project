@@ -7,7 +7,7 @@ func _init():
 	 screen_size
 	 down_accel = 20
 	 down_min_speed = 60
-	 score_value = 1000
+	 score_value = 5000
 	
 
 func _ready():
