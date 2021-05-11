@@ -1,32 +1,35 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://resources/sprites/nine_patch.png" type="Texture" id=1]
-[ext_resource path="res://resources/sprites/player_projectile.png" type="Texture" id=2]
-[ext_resource path="res://resources/HUD_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://resources/sprites/weapon_counter.png" type="Texture" id=1]
+[ext_resource path="res://resources/sprites/shotgun_weapon_icon.png" type="Texture" id=2]
+[ext_resource path="res://resources/HUD_font_2.tres" type="DynamicFont" id=3]
 [ext_resource path="res://scripts/WeaponDisplay.gd" type="Script" id=4]
 
 [node name="WeaponDisplay" type="MarginContainer"]
-margin_right = 67.0
-margin_bottom = 26.0
+margin_right = 100.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 100, 50 )
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Background" type="NinePatchRect" parent="."]
-margin_right = 67.0
-margin_bottom = 26.0
+self_modulate = Color( 0, 0.647059, 1, 1 )
+margin_right = 100.0
+margin_bottom = 50.0
 rect_min_size = Vector2( 67, 26 )
 texture = ExtResource( 1 )
-patch_margin_left = 2
-patch_margin_top = 2
-patch_margin_right = 2
-patch_margin_bottom = 2
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 17
 
 [node name="Projectile" type="TextureRect" parent="Background"]
-anchor_bottom = 1.0
-margin_left = -1.0
-margin_right = 25.0
+margin_left = 5.84203
+margin_top = 8.02039
+margin_right = 40.842
+margin_bottom = 43.0204
 texture = ExtResource( 2 )
 stretch_mode = 4
 __meta__ = {
@@ -34,15 +37,13 @@ __meta__ = {
 }
 
 [node name="Level" type="Label" parent="Background"]
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -42.0
-margin_top = -9.0
-margin_right = -6.0
-margin_bottom = 10.0
+modulate = Color( 0.894118, 0.972549, 1, 1 )
+margin_left = 41.0
+margin_top = 5.0
+margin_right = 85.0
+margin_bottom = 44.0
 custom_fonts/font = ExtResource( 3 )
+custom_colors/font_outline_modulate = Color( 0, 0.403922, 0.560784, 0.415686 )
 text = "0"
 align = 2
 valign = 1

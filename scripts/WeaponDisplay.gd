@@ -1,10 +1,5 @@
 extends MarginContainer
 
-var projectile: Node
-
 func update_weapon(weapon):
+	$Background/Projectile.texture = load('res://resources/sprites/' + weapon.friendly_name + '_weapon_icon.png')
 	$Background/Level.text = str(weapon.level)
-	if (projectile):
-		projectile.queue_free()
-	projectile = weapon.Projectile.instance()
-	$Background/Projectile.texture = projectile.get_node("Sprite").texture

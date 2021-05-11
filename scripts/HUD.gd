@@ -5,7 +5,7 @@ signal start_game
 var score = 0
 
 func _ready():
-	$Display/Rows/FirstRow/ScoreLabel.text = str(score)
+	$Display/Rows/FirstRow/ScoreMarginContainer/ScoreLabel.text = str(score)
 	$ExitButton.hide()
 	$Display/Rows/FirstRow/HealthContainer2.hide()
 	$Display/Rows/SecondRow/WeaponDisplay2.hide()
@@ -22,7 +22,7 @@ func update_health(value, player):
 
 func add_score(value):
 	score += value
-	$Display/Rows/FirstRow/ScoreLabel.text = str(score)
+	$Display/Rows/FirstRow/ScoreMarginContainer/ScoreLabel.text = str(score)
 	
 func reset_score():
 	score = 0

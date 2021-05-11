@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://resources/sprites/health_bar_mid.png" type="Texture" id=1]
 [ext_resource path="res://resources/sprites/health_bar_bg.png" type="Texture" id=2]
@@ -6,7 +6,10 @@
 [ext_resource path="res://scripts/HUD.gd" type="Script" id=4]
 [ext_resource path="res://resources/arial.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://scenes/WeaponDisplay.tscn" type="PackedScene" id=6]
-[ext_resource path="res://resources/sprites/health_bar_mid_blue.png" type="Texture" id=7]
+[ext_resource path="res://resources/sprites/health_bar_mid_rev.png" type="Texture" id=7]
+[ext_resource path="res://scenes/WeaponDisplay2.tscn" type="PackedScene" id=8]
+[ext_resource path="res://resources/sprites/health_bar_bg_rev.png" type="Texture" id=9]
+[ext_resource path="res://resources/HUD_font_2.tres" type="DynamicFont" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -27,98 +30,117 @@ script = ExtResource( 4 )
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -350.0
-margin_top = 1.0
 margin_right = 350.0
-margin_bottom = 141.0
-custom_constants/margin_right = 10
-custom_constants/margin_top = 10
-custom_constants/margin_left = 10
+margin_bottom = 89.0
+custom_constants/margin_top = 0
 custom_constants/margin_bottom = 10
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Rows" type="VBoxContainer" parent="Display"]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 690.0
-margin_bottom = 130.0
+margin_right = 772.0
+margin_bottom = 104.0
 
 [node name="FirstRow" type="HBoxContainer" parent="Display/Rows"]
-margin_right = 680.0
-margin_bottom = 19.0
-custom_constants/separation = 10
+margin_right = 700.0
+margin_bottom = 50.0
+custom_constants/separation = 20
+alignment = 1
 
 [node name="HealthContainer" type="HBoxContainer" parent="Display/Rows/FirstRow"]
-margin_right = 303.0
-margin_bottom = 19.0
+margin_right = 250.0
+margin_bottom = 50.0
 size_flags_horizontal = 3
 
 [node name="HealthLabel" type="Label" parent="Display/Rows/FirstRow/HealthContainer"]
+visible = false
+margin_top = 40.0
 margin_right = 23.0
-margin_bottom = 19.0
+margin_bottom = 59.0
 custom_fonts/font = ExtResource( 3 )
 text = "HP"
 
 [node name="HealthBarCenterer" type="CenterContainer" parent="Display/Rows/FirstRow/HealthContainer"]
-margin_left = 27.0
-margin_right = 283.0
-margin_bottom = 19.0
+margin_right = 250.0
+margin_bottom = 50.0
 size_flags_vertical = 3
 
 [node name="HealthBar" type="TextureProgress" parent="Display/Rows/FirstRow/HealthContainer/HealthBarCenterer"]
-margin_top = 1.0
-margin_right = 256.0
-margin_bottom = 17.0
-size_flags_stretch_ratio = 0.0
-value = 100.0
-texture_under = ExtResource( 2 )
-texture_progress = ExtResource( 7 )
-
-[node name="HealthContainer2" type="HBoxContainer" parent="Display/Rows/FirstRow"]
-margin_left = 313.0
-margin_right = 616.0
-margin_bottom = 19.0
-size_flags_horizontal = 3
-
-[node name="HealthLabel" type="Label" parent="Display/Rows/FirstRow/HealthContainer2"]
-margin_right = 23.0
-margin_bottom = 19.0
-custom_fonts/font = ExtResource( 3 )
-text = "HP"
-
-[node name="HealthBarCenterer" type="CenterContainer" parent="Display/Rows/FirstRow/HealthContainer2"]
-margin_left = 27.0
-margin_right = 283.0
-margin_bottom = 19.0
-size_flags_vertical = 3
-
-[node name="HealthBar" type="TextureProgress" parent="Display/Rows/FirstRow/HealthContainer2/HealthBarCenterer"]
-margin_top = 1.0
-margin_right = 256.0
-margin_bottom = 17.0
+margin_right = 250.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 250, 50 )
 size_flags_stretch_ratio = 0.0
 value = 100.0
 texture_under = ExtResource( 2 )
 texture_progress = ExtResource( 1 )
+tint_under = Color( 0.231373, 0.709804, 1, 1 )
+tint_progress = Color( 0, 0.694118, 1, 1 )
+nine_patch_stretch = true
 
-[node name="ScoreLabel" type="Label" parent="Display/Rows/FirstRow"]
-margin_left = 626.0
-margin_right = 680.0
-margin_bottom = 19.0
-custom_fonts/font = ExtResource( 3 )
+[node name="ScoreMarginContainer" type="MarginContainer" parent="Display/Rows/FirstRow"]
+margin_left = 270.0
+margin_right = 430.0
+margin_bottom = 50.0
+custom_constants/margin_right = 5
+custom_constants/margin_left = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreLabel" type="Label" parent="Display/Rows/FirstRow/ScoreMarginContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 155.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 150, 0 )
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 0.203922 )
 text = "100000"
+align = 1
+
+[node name="HealthContainer2" type="HBoxContainer" parent="Display/Rows/FirstRow"]
+margin_left = 450.0
+margin_right = 700.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+
+[node name="HealthLabel" type="Label" parent="Display/Rows/FirstRow/HealthContainer2"]
+visible = false
+margin_top = 40.0
+margin_right = 23.0
+margin_bottom = 59.0
+custom_fonts/font = ExtResource( 3 )
+text = "HP"
+
+[node name="HealthBarCenterer" type="CenterContainer" parent="Display/Rows/FirstRow/HealthContainer2"]
+margin_right = 250.0
+margin_bottom = 50.0
+size_flags_vertical = 3
+
+[node name="HealthBar" type="TextureProgress" parent="Display/Rows/FirstRow/HealthContainer2/HealthBarCenterer"]
+margin_right = 250.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 250, 50 )
+size_flags_stretch_ratio = 0.0
+value = 100.0
+texture_under = ExtResource( 9 )
+texture_progress = ExtResource( 7 )
+tint_under = Color( 0.478431, 1, 0.188235, 1 )
+tint_progress = Color( 0.384314, 1, 0.235294, 1 )
+nine_patch_stretch = true
 
 [node name="SecondRow" type="HBoxContainer" parent="Display/Rows"]
-margin_top = 23.0
-margin_right = 680.0
-margin_bottom = 49.0
+margin_top = 54.0
+margin_right = 772.0
+margin_bottom = 104.0
+custom_constants/separation = 500
 
 [node name="WeaponDisplay" parent="Display/Rows/SecondRow" instance=ExtResource( 6 )]
 
-[node name="WeaponDisplay2" parent="Display/Rows/SecondRow" instance=ExtResource( 6 )]
-margin_left = 71.0
-margin_right = 138.0
+[node name="WeaponDisplay2" parent="Display/Rows/SecondRow" instance=ExtResource( 8 )]
+margin_left = 600.0
+margin_right = 700.0
 
 [node name="Message" type="Label" parent="."]
 anchor_left = 0.5
