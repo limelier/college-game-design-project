@@ -7,3 +7,4 @@
 [node name="WeaponRocket" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
 Projectile = ExtResource( 3 )
+friendly_name = "rocket"

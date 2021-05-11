@@ -7,6 +7,7 @@
 [node name="WeaponShotgun" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
 Projectile = ExtResource( 3 )
+friendly_name = "shotgun"
 
 [node name="Cooldown" parent="." index="0"]
 wait_time = 0.4

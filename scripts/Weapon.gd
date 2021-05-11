@@ -2,7 +2,7 @@ extends Node
 
 export (PackedScene) var Projectile
 export (int) var level = 1
-
+export var friendly_name = 'unused'
 
 func update_level(level):
 	self.level = level

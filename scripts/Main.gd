@@ -5,9 +5,10 @@ onready var Player = preload("res://scenes/Player.tscn")
 var two_players = false
 var player_count = 1
 
-var pickup_drop_chance = 0.5
+var pickup_drop_chance = 0.005
 var power_pickup_chance = 0.6
-var PowerPickup = preload("res://scenes/pickups/PowerPickup.tscn")
+var PowerPickup = load("res://scenes/pickups/PowerPickup.tscn")
+var WeaponPickup = load("res://scenes/pickups/WeaponPickup.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -50,8 +51,13 @@ func drop_pickup(position):
 	if randf() <= power_pickup_chance:
 		pickup = PowerPickup.instance()
 	else:
-		# todo: change
-		pickup = PowerPickup.instance()
+		pickup = WeaponPickup.instance()
+		var weapon;
+		match randi() % 3:
+			0: weapon = 'starter'
+			1: weapon = 'shotgun'
+			2: weapon = 'rocket'
+		pickup.update_weapon(weapon)
 	add_child(pickup)
 	pickup.position = position
 

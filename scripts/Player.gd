@@ -3,12 +3,19 @@ extends Area2D
 const movement_speed = 400
 var screen_size
 var health = 100
-var selected_weapon = 0
 var damage = 0
 var weapon
+var weapon_level = 1
+var weapon_level_cap = 5
 var inputs
 var player = 0
 var death_pos
+
+onready var weapons = {
+	'starter': $Weapons/WeaponStarter,
+	'shotgun': $Weapons/WeaponShotgun,
+	'rocket': $Weapons/WeaponRocket,
+}
 
 signal health_updated
 signal health_zero
@@ -32,9 +39,9 @@ func update_controls():
 
 func _ready():
 	screen_size = get_viewport_rect().size
-	weapon = $Weapons.get_child(selected_weapon)
+	weapon = weapons['starter']
+	emit_signal("weapon_changed", weapon)
 	hide()
-	change_weapon(0)
 
 	inputs = {'right': "ui_right", 'left': "ui_left", 'down': "ui_down", 
 	'up': "ui_up", 'fire': "p2_fire", 'cycle_weapon': "p2_cycle_weapon"}
@@ -58,16 +65,8 @@ func _process(delta):
 		
 		if Input.is_action_pressed(inputs['fire']):
 			weapon.fire($BulletSpawn, get_parent())
-			
-		if Input.is_action_just_pressed(inputs['cycle_weapon']):
-			change_weapon()
 
-func change_weapon(index = null):
-	if index == null:
-		index = (selected_weapon + 1) % $Weapons.get_child_count()
-	selected_weapon = index
-	weapon = $Weapons.get_child(selected_weapon)
-	emit_signal("weapon_changed", weapon)
+
 
 func take_damage(amount):
 	health -= amount
@@ -93,8 +92,22 @@ func _on_Player_area_entered(area):
 	# bullets
 	if area.is_in_group('enemyBullet'):
 		take_damage(area.damage)
+	# power pickup
 	if area.is_in_group('powerPickup'):
-		weapon.update_level(weapon.level + 1)
+		weapon_level += 1
+		if weapon_level > weapon_level_cap:
+			weapon_level = weapon_level_cap
+		weapon.update_level(weapon_level)
+		emit_signal("weapon_changed", weapon)
+	# weapon pickup
+	if area.is_in_group('weaponPickup'):
+		if area.for_weapon == weapon.friendly_name:
+			weapon_level += 1
+			if weapon_level > weapon_level_cap:
+				weapon_level = weapon_level_cap
+		else:
+			weapon = weapons[area.for_weapon]
+		weapon.update_level(weapon_level)
 		emit_signal("weapon_changed", weapon)
 	
 	area.queue_free()
