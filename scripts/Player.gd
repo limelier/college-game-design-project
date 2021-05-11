@@ -9,6 +9,7 @@ var weapon
 var inputs
 var player = 0
 var death_pos
+
 signal health_updated
 signal health_zero
 signal weapon_changed
@@ -90,6 +91,11 @@ func _on_Player_body_entered(body):
 
 func _on_Player_area_entered(area):
 	# bullets
-	take_damage(area.damage)
+	if area.is_in_group('enemyBullet'):
+		take_damage(area.damage)
+	if area.is_in_group('powerPickup'):
+		weapon.update_level(weapon.level + 1)
+		emit_signal("weapon_changed", weapon)
+	
 	area.queue_free()
 	pass
