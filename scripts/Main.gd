@@ -5,8 +5,8 @@ onready var Player = preload("res://scenes/Player.tscn")
 var two_players = false
 var player_count = 1
 
-var pickup_drop_chance = 0.005
-var power_pickup_chance = 0.6
+var pickup_drop_chance = 0.5
+var power_pickup_chance = 0.3
 var PowerPickup = load("res://scenes/pickups/PowerPickup.tscn")
 var WeaponPickup = load("res://scenes/pickups/WeaponPickup.tscn")
 
