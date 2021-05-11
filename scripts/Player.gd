@@ -70,10 +70,11 @@ func _process(delta):
 
 func take_damage(amount):
 	health -= amount
-	emit_signal("health_updated", health)
 	
 	if health < 0:
 		health = 0
+	
+	emit_signal("health_updated", health)	
 	
 	if health == 0:
 		position = death_pos
@@ -93,14 +94,14 @@ func _on_Player_area_entered(area):
 	if area.is_in_group('enemyBullet'):
 		take_damage(area.damage)
 	# power pickup
-	if area.is_in_group('powerPickup'):
+	elif area.is_in_group('powerPickup'):
 		weapon_level += 1
 		if weapon_level > weapon_level_cap:
 			weapon_level = weapon_level_cap
 		weapon.update_level(weapon_level)
 		emit_signal("weapon_changed", weapon)
 	# weapon pickup
-	if area.is_in_group('weaponPickup'):
+	elif area.is_in_group('weaponPickup'):
 		if area.for_weapon == weapon.friendly_name:
 			weapon_level += 1
 			if weapon_level > weapon_level_cap:
@@ -109,6 +110,12 @@ func _on_Player_area_entered(area):
 			weapon = weapons[area.for_weapon]
 		weapon.update_level(weapon_level)
 		emit_signal("weapon_changed", weapon)
+	# health pickup
+	elif area.is_in_group('healthPickup'):
+		self.health += area.amount
+		if self.health > 100:
+			self.health = 100
+		emit_signal("health_updated", health)
 	
 	area.queue_free()
 	pass

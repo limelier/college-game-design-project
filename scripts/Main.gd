@@ -5,8 +5,10 @@ onready var Player = preload("res://scenes/Player.tscn")
 var two_players = false
 var player_count = 1
 
-var pickup_drop_chance = 0.5
-var power_pickup_chance = 0.3
+var health_pickup_chance = 0.1
+var weapon_pickup_chance = 0.1
+var power_pickup_chance = 0.1
+var HealthPickup = load("res://scenes/pickups/HealthPickup.tscn")
 var PowerPickup = load("res://scenes/pickups/PowerPickup.tscn")
 var WeaponPickup = load("res://scenes/pickups/WeaponPickup.tscn")
 
@@ -43,14 +45,16 @@ func _on_Player_health_updated(health):
 
 func _on_Enemy_death(position, score_value):
 	$HUD.add_score(score_value)
-	if randf() <= pickup_drop_chance:
-		drop_pickup(position)
+	drop_pickup(position)
 
 func drop_pickup(position):
 	var pickup
-	if randf() <= power_pickup_chance:
+	# rolls are sequential, later powerups can be overwritten by previous ones
+	if randf() <= health_pickup_chance:
+		pickup = HealthPickup.instance()
+	elif randf() <= power_pickup_chance:
 		pickup = PowerPickup.instance()
-	else:
+	elif randf() <= weapon_pickup_chance:
 		pickup = WeaponPickup.instance()
 		var weapon;
 		match randi() % 3:
@@ -58,6 +62,8 @@ func drop_pickup(position):
 			1: weapon = 'shotgun'
 			2: weapon = 'rocket'
 		pickup.update_weapon(weapon)
+	else:
+		return
 	add_child(pickup)
 	pickup.position = position
 
