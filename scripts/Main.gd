@@ -4,6 +4,7 @@ extends "res://scripts/Event.gd"
 onready var Player = preload("res://scenes/Player.tscn")
 var two_players = false
 var player_count = 1
+var game_running = false
 
 var health_pickup_chance = 0.1
 var weapon_pickup_chance = 0.8
@@ -84,6 +85,7 @@ func new_game():
 	$StartTimer.start()
 	$HUD.reset_score()
 	$HUD.show_message('Get Ready')
+	game_running = true	
 
 
 func _on_StartTimer_timeout():
@@ -96,10 +98,11 @@ func game_over():
 		$EnemySpawnTimer.stop()
 		$HUD.show_game_over()
 		get_tree().call_group('Enemies', 'queue_free')
+		game_running = false
 		
 
 func _process(delta):
-	if Input.is_action_pressed("ui_accept") and not two_players:
+	if Input.is_action_pressed("ui_accept") and not two_players and game_running:
 		$Player2.start($StartPositionP2.position, $outside.position, 1)
 		$Player2.update_controls()
 		$Player.update_controls()
