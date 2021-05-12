@@ -116,6 +116,9 @@ func _on_Player_area_entered(area):
 		if self.health > 100:
 			self.health = 100
 		emit_signal("health_updated", health)
+	elif area.is_in_group('rocketExplosion'):
+		# do not queue_free explosions, they've got it handled
+		return
 	
 	area.queue_free()
 	pass

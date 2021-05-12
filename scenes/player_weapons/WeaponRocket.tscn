@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scripts/WeaponRocket.gd" type="Script" id=1]
 [ext_resource path="res://scenes/player_weapons/Weapon.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/player_bullets/PlayerBullet_Rocket.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/player_bullets/PlayerProjRocket.tscn" type="PackedScene" id=3]
 
 [node name="WeaponRocket" instance=ExtResource( 2 )]
 script = ExtResource( 1 )

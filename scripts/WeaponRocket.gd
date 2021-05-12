@@ -2,9 +2,10 @@ extends "res://scripts/Weapon.gd"
 
 var init_cooldown = $Cooldown.wait_time
 
-export (int) var init_damage = 30
+export (int) var init_damage = 10
 export (int) var init_accel = 150
 export (int) var init_max_speed = 1500
+var explosion_scale_mult = 1
 
 var damage = init_damage
 var accel = init_accel
@@ -22,6 +23,7 @@ func update_level(level):
 	damage = factor * init_damage
 	accel = factor * init_accel
 	max_speed = factor * init_max_speed
+	explosion_scale_mult += 0.1
 	
 
 func spawn(bullet_spawn, parent):
@@ -30,5 +32,6 @@ func spawn(bullet_spawn, parent):
 	projectile.damage = damage
 	projectile.acceleration = accel
 	projectile.max_speed = max_speed
+	projectile.explosion_scale_mult = explosion_scale_mult
 	parent.add_child(projectile)
 	

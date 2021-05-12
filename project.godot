@@ -35,6 +35,12 @@ window/stretch/aspect="keep"
 
 singletons=[ "res://git_api.gdnlib" ]
 
+[importer_defaults]
+
+texture={
+"flags/filter": false
+}
+
 [input]
 
 ui_accept={
