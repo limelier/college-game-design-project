@@ -2,16 +2,17 @@ extends "res://scripts/EnemyClass.gd"
 
 var sgn=1
 func _init():
-	 health = 70
-	 damage = 20
+	 health = 170
+	 damage = 5
 	 screen_size
 	 down_accel = 20
 	 down_min_speed = 60
-	 score_value = 5000
+	 score_value = 500
 	
 
 func _ready():
-	$BulletTimer.wait_time = rand_range(1.0, 3.0)
+	$BulletTimer.wait_time = rand_range(0.5, 1.5)
+	$BulletTimer2.wait_time = rand_range(0.5, 1.5)
 	screen_size = get_viewport_rect().size
 
 func _physics_process(delta):
@@ -36,15 +37,17 @@ func _physics_process(delta):
 		
 		
 func _on_BulletTimer_timeout():
-	$BulletTimer.wait_time = rand_range(0.7, 2.0)
+	$BulletTimer.wait_time = rand_range(0.4, 1.7)
 	
 	var bullet1 = Bullet.instance()
+	bullet1.damage=damage
 	get_parent().add_child(bullet1)
 	bullet1.position = $BulletSpawn.global_position
 
 func _on_BulletTimer2_timeout():
-	$BulletTimer2.wait_time = rand_range(0.7, 2.0)
+	$BulletTimer2.wait_time = rand_range(0.4, 1.7)
 	
 	var bullet2 = Bullet.instance()
+	bullet2.damage=damage
 	get_parent().add_child(bullet2)
 	bullet2.position = $BulletSpawn2.global_position

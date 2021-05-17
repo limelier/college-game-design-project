@@ -30,6 +30,5 @@ position = Vector2( 0.148827, 27.6541 )
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 position = Vector2( 0.346641, 2.15577 )
 scale = Vector2( 2.93263, 2.75731 )
-
 [connection signal="timeout" from="BulletTimer" to="." method="_on_BulletTimer_timeout"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

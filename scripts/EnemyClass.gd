@@ -11,6 +11,7 @@ var down_min_speed
 var down_accel
 var score_value = 10
 var damage
+
 signal death
 
 func _ready():
@@ -46,6 +47,7 @@ func _on_BulletTimer_timeout():
 	$BulletTimer.wait_time = rand_range(1.0, 3.0)
 	
 	var bullet = Bullet.instance()
+	bullet.damage=damage
 	get_parent().add_child(bullet)
 	bullet.position = $BulletSpawn.global_position
 
@@ -53,5 +55,7 @@ func _on_BulletTimer_timeout():
 func damage(amount):
 	health -= amount
 	if health <= 0:
+		print(position)
+		print(score_value)
 		emit_signal("death", position, score_value)
 		queue_free()

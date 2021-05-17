@@ -6,9 +6,9 @@ var two_players = false
 var player_count = 1
 var game_running = false
 
-var health_pickup_chance = 0.1
-var weapon_pickup_chance = 0.8
-var power_pickup_chance = 0.1
+var health_pickup_chance = 0.2
+var weapon_pickup_chance = 0.05
+var power_pickup_chance = 0.05
 var HealthPickup = load("res://scenes/pickups/HealthPickup.tscn")
 var PowerPickup = load("res://scenes/pickups/PowerPickup.tscn")
 var WeaponPickup = load("res://scenes/pickups/WeaponPickup.tscn")
@@ -20,7 +20,25 @@ func _ready():
 
 
 func _on_EnemySpawnTimer_timeout():
+	if score<=1500:
+		level1()
+	elif score<=5000:
+		level2()
+	elif score<=10000:
+		level3()
+	elif score<=25000:
+		level4()
+	elif score <=50000:
+		level5()
+	elif score<=100000:
+		level6()
+	else:
+		endgamesession()
 	
+		
+
+
+func old_on_EnemySpawnTimer_timeout():
 	var temp=randi()
 	var temp2=randi()
 	if temp2%2==0:
@@ -39,7 +57,6 @@ func _on_EnemySpawnTimer_timeout():
 	else:
 		self.spawn_Random_enemy()
 		$EnemySpawnTimer.wait_time = rand_range(2.0, 3.0)
-
 
 func _on_Player_health_updated(health):
 	$HUD.update_health(health, 0)
@@ -109,6 +126,9 @@ func _process(delta):
 		two_players = true
 		player_count = 2
 		$HUD.show_p2()
+	if $AudioStreamPlayer.playing==false:
+		$AudioStreamPlayer.play()
+	
 
 
 

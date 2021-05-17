@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/NieR Automata 8-Bit Soundtrack - Weight of the World.wav-4afbc59892aecdbd46bb08b0a182df74.sample"
+
+[deps]
+
+source_file="res://resources/NieR Automata 8-Bit Soundtrack - Weight of the World.wav"
+dest_files=[ "res://.import/NieR Automata 8-Bit Soundtrack - Weight of the World.wav-4afbc59892aecdbd46bb08b0a182df74.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

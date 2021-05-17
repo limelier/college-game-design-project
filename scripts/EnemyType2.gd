@@ -6,8 +6,8 @@ extends "res://scripts/EnemyClass.gd"
 # var b = "text"
 
 func  _init():
-	health = 40
-	damage = 20
+	health = 55
+	damage = 30
 	screen_size
 	down_accel = 5
 	down_min_speed = 35
@@ -18,20 +18,17 @@ func _ready():
 	$BulletTimer.wait_time = rand_range(1.0, 3.0)
 	screen_size = get_viewport_rect().size
 	
-func damage(amount):
-	health -= amount
-	if health <= 0:
-		emit_signal("death", score_value)
-		queue_free()
 
 func _on_BulletTimer_timeout():
 	$BulletTimer.wait_time = rand_range(1.0, 3.0)
 	
 	var bullet1 = Bullet.instance()
+	bullet1.damage=damage
 	get_parent().add_child(bullet1)
 	bullet1.position = $BulletSpawn.global_position
 	
 	var bullet2 = Bullet.instance()
+	bullet2.damage=damage
 	get_parent().add_child(bullet2)
 	bullet2.position = $BulletSpawn2.global_position
 

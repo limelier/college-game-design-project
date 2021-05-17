@@ -7,7 +7,7 @@ export (int) var init_accel = 150
 export (int) var init_max_speed = 1500
 var explosion_scale_mult = 1
 
-var damage = init_damage
+var damage = init_damage+10
 var accel = init_accel
 var max_speed = init_max_speed
 
@@ -19,11 +19,11 @@ func update_level(level):
 	.update_level(level)
 	# 100%, 8/9, 8/10, 8/11, ...
 	$Cooldown.wait_time = init_cooldown * (8.0 / (8.0 + level - 1))
-	var factor = 1.0 + float(level - 1) / 5.0
+	var factor = 1.0 + float(level - 1) / 4.0
 	damage = factor * init_damage
 	accel = factor * init_accel
 	max_speed = factor * init_max_speed
-	explosion_scale_mult += 0.1
+	explosion_scale_mult += 0.25
 	
 
 func spawn(bullet_spawn, parent):

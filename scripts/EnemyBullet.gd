@@ -2,7 +2,7 @@ extends Area2D
 
 var velocity = Vector2()
 const speed = 300
-const damage = 10
+var damage = 10
 
 func _ready():
 	velocity = Vector2.DOWN * speed
