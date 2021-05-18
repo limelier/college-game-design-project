@@ -55,7 +55,5 @@ func _on_BulletTimer_timeout():
 func damage(amount):
 	health -= amount
 	if health <= 0:
-		print(position)
-		print(score_value)
 		emit_signal("death", position, score_value)
 		queue_free()

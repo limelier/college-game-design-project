@@ -6,9 +6,9 @@ var two_players = false
 var player_count = 1
 var game_running = false
 
-var health_pickup_chance = 0.2
-var weapon_pickup_chance = 0.05
-var power_pickup_chance = 0.05
+var health_pickup_chance = 0.05
+var weapon_pickup_chance = 0.01
+var power_pickup_chance = 0.005
 var HealthPickup = load("res://scenes/pickups/HealthPickup.tscn")
 var PowerPickup = load("res://scenes/pickups/PowerPickup.tscn")
 var WeaponPickup = load("res://scenes/pickups/WeaponPickup.tscn")
@@ -34,29 +34,6 @@ func _on_EnemySpawnTimer_timeout():
 		level6()
 	else:
 		endgamesession()
-	
-		
-
-
-func old_on_EnemySpawnTimer_timeout():
-	var temp=randi()
-	var temp2=randi()
-	if temp2%2==0:
-		if temp%4==0:
-			self.spawn_V_group()
-			$EnemySpawnTimer.wait_time = rand_range(4.0, 5.0)
-		elif temp%4==1:
-			self.spawn_Random_enemy()
-			$EnemySpawnTimer.wait_time = rand_range(2.0, 3.0)
-		elif temp%4==2:
-			self.spawn_Square_group()
-			$EnemySpawnTimer.wait_time = rand_range(4.0, 5.0)
-		else:
-			self.spawn_line_group()
-			$EnemySpawnTimer.wait_time = rand_range(3.0, 4.0)
-	else:
-		self.spawn_Random_enemy()
-		$EnemySpawnTimer.wait_time = rand_range(2.0, 3.0)
 
 func _on_Player_health_updated(health):
 	$HUD.update_health(health, 0)
