@@ -10,7 +10,11 @@ var weapon_level_cap = 5
 var inputs
 var player = 0
 var death_pos
-
+var sounds = {
+	'starter': preload("res://resources/sounds/laser-shot.wav"),
+	'shotgun': preload("res://resources/sounds/laser-shot.wav"),
+	'rocket': preload("res://resources/sounds/laser-shot.wav"),
+}
 onready var weapons = {
 	'starter': $Weapons/WeaponStarter,
 	'shotgun': $Weapons/WeaponShotgun,
@@ -46,6 +50,21 @@ func _ready():
 	inputs = {'right': "ui_right", 'left': "ui_left", 'down': "ui_down", 
 	'up': "ui_up", 'fire': "p2_fire", 'cycle_weapon': "p2_cycle_weapon"}
 
+func clear_sounds(node):
+	node.queue_free()
+
+func gun_effects():
+	var sound_player = AudioStreamPlayer2D.new()
+	add_child(sound_player)
+	if weapon == weapons['starter']:
+		sound_player.stream = sounds['starter']
+	elif weapon == weapons['shotgun']:
+		sound_player.stream = sounds['shotgun']
+	elif weapon == weapons['rocket']:
+		sound_player.stream = sounds['rocket']
+	sound_player.play()
+	sound_player.connect('finished', self, 'clear_sounds', [sound_player])
+	
 func _process(delta):
 	if visible:
 		var velocity = Vector2()  # The player's movement vector.
@@ -64,7 +83,9 @@ func _process(delta):
 		position.y = clamp(position.y, 0, screen_size.y)
 		
 		if Input.is_action_pressed(inputs['fire']):
-			weapon.fire($BulletSpawn, get_parent())
+			var shot = weapon.fire($BulletSpawn, get_parent())
+			if shot:
+				gun_effects()
 
 
 

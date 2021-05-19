@@ -18,4 +18,6 @@ func fire(bullet_spawn, parent):
 	if $Cooldown.is_stopped():
 		$Cooldown.start()
 		spawn(bullet_spawn, parent)
+		return true
+	return false
 
