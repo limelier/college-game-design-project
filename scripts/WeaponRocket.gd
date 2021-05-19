@@ -33,5 +33,6 @@ func spawn(bullet_spawn, parent):
 	projectile.acceleration = accel
 	projectile.max_speed = max_speed
 	projectile.explosion_scale_mult = explosion_scale_mult
+	projectile.type = 'rocket'
 	parent.add_child(projectile)
 	

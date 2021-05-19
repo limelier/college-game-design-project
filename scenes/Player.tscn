@@ -28,8 +28,5 @@ position = Vector2( -0.176772, -33.3224 )
 [node name="WeaponShotgun" parent="Weapons" instance=ExtResource( 3 )]
 
 [node name="WeaponRocket" parent="Weapons" instance=ExtResource( 4 )]
-
-[node name="gun_sound" type="AudioStreamPlayer2D" parent="."]
-volume_db = -20.195
 [connection signal="area_entered" from="." to="." method="_on_Player_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_Player_body_entered"]

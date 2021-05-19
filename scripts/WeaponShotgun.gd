@@ -20,3 +20,4 @@ func spawn(bullet_spawn, parent):
 		projectile.rotation = initial_rotation + i * spread_between
 		parent.add_child(projectile)
 		projectile.position = bullet_spawn.global_position
+		projectile.type = 'pellet'

@@ -11,6 +11,7 @@ func update_level(level):
 func spawn(bullet_spawn, parent):
 	var projectile = Projectile.instance()
 	parent.add_child(projectile)
+	projectile.type = 'starter'
 	projectile.position = bullet_spawn.global_position
 
 
@@ -20,4 +21,5 @@ func fire(bullet_spawn, parent):
 		spawn(bullet_spawn, parent)
 		return true
 	return false
+	
 

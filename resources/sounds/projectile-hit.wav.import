@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/projectile-hit.wav-56624765e5a036b58e769345f8c40ee3.sample"
+
+[deps]
+
+source_file="res://resources/sounds/projectile-hit.wav"
+dest_files=[ "res://.import/projectile-hit.wav-56624765e5a036b58e769345f8c40ee3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
