@@ -12,8 +12,8 @@ var player = 0
 var death_pos
 var sounds = {
 	'starter': preload("res://resources/sounds/laser-shot.wav"),
-	'shotgun': preload("res://resources/sounds/laser-shot.wav"),
-	'rocket': preload("res://resources/sounds/laser-shot.wav"),
+	'shotgun': preload("res://resources/sounds/shotgun-shot.wav"),
+	'rocket': preload("res://resources/sounds/rocket-shot.wav"),
 }
 onready var weapons = {
 	'starter': $Weapons/WeaponStarter,

@@ -2,12 +2,11 @@ extends Node2D
 
 var sounds = {
 	'starter': preload("res://resources/sounds/projectile-hit.wav"),
-	'shotgun': preload("res://resources/sounds/projectile-hit.wav"),
-	'rocket': preload("res://resources/sounds/projectile-hit.wav"),
+	'shotgun': preload("res://resources/sounds/shotgun-hit.wav"),
+	'rocket': preload("res://resources/sounds/rocket-explosion.wav"),
 }
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+
+
 func clear_sounds(node):
 	node.queue_free()
 	queue_free()
