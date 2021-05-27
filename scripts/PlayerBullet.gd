@@ -4,7 +4,7 @@ var velocity = Vector2()
 var type
 var effect = preload('res://scenes/ProjEffect.tscn')
 export var speed = 500
-export var damage = 10
+export var damage = 18
 
 func _ready():
 	velocity = Vector2.UP.rotated(rotation) * speed

@@ -57,10 +57,13 @@ func gun_effects():
 	var sound_player = AudioStreamPlayer2D.new()
 	add_child(sound_player)
 	if weapon == weapons['starter']:
+		sound_player.volume_db = -20.0
 		sound_player.stream = sounds['starter']
 	elif weapon == weapons['shotgun']:
+		sound_player.volume_db = +5.0		
 		sound_player.stream = sounds['shotgun']
 	elif weapon == weapons['rocket']:
+		sound_player.volume_db = -10.0
 		sound_player.stream = sounds['rocket']
 	sound_player.play()
 	sound_player.connect('finished', self, 'clear_sounds', [sound_player])

@@ -16,10 +16,13 @@ func play_hit_sound(type):
 	var sound_player = AudioStreamPlayer.new()
 	add_child(sound_player)
 	if type == 'starter':
+		sound_player.volume_db = 0.0		
 		sound_player.stream = sounds['starter']
 	elif type == 'pellet':
+		sound_player.volume_db = -10.0		
 		sound_player.stream = sounds['shotgun']
 	elif type == 'rocket':
+		sound_player.volume_db = -10.0
 		sound_player.stream = sounds['rocket']
 	sound_player.play()
 	sound_player.connect('finished', self, 'clear_sounds', [sound_player])

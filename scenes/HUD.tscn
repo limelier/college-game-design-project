@@ -1,27 +1,30 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://resources/sprites/health_bar_mid.png" type="Texture" id=1]
 [ext_resource path="res://resources/sprites/health_bar_bg.png" type="Texture" id=2]
 [ext_resource path="res://resources/HUD_font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://scripts/HUD.gd" type="Script" id=4]
-[ext_resource path="res://resources/arial.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://scenes/WeaponDisplay.tscn" type="PackedScene" id=6]
 [ext_resource path="res://resources/sprites/health_bar_mid_rev.png" type="Texture" id=7]
 [ext_resource path="res://scenes/WeaponDisplay2.tscn" type="PackedScene" id=8]
 [ext_resource path="res://resources/sprites/health_bar_bg_rev.png" type="Texture" id=9]
 [ext_resource path="res://resources/HUD_font_2.tres" type="DynamicFont" id=10]
 
-[sub_resource type="DynamicFont" id=1]
-size = 64
-outline_size = 1
-outline_color = Color( 0.133333, 0.113725, 0.266667, 1 )
-font_data = ExtResource( 5 )
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://resources/nasalization-rg.ttf"
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 64
 outline_size = 1
-outline_color = Color( 0.133333, 0.113725, 0.266667, 1 )
-font_data = ExtResource( 5 )
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFontData" id=4]
+font_path = "res://resources/nasalization-rg.ttf"
+
+[sub_resource type="DynamicFont" id=5]
+size = 48
+outline_size = 1
+font_data = SubResource( 4 )
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 4 )
@@ -39,7 +42,7 @@ __meta__ = {
 }
 
 [node name="Rows" type="VBoxContainer" parent="Display"]
-margin_right = 772.0
+margin_right = 700.0
 margin_bottom = 104.0
 
 [node name="FirstRow" type="HBoxContainer" parent="Display/Rows"]
@@ -126,13 +129,14 @@ size_flags_stretch_ratio = 0.0
 value = 100.0
 texture_under = ExtResource( 9 )
 texture_progress = ExtResource( 7 )
+fill_mode = 1
 tint_under = Color( 0.478431, 1, 0.188235, 1 )
 tint_progress = Color( 0.384314, 1, 0.235294, 1 )
 nine_patch_stretch = true
 
 [node name="SecondRow" type="HBoxContainer" parent="Display/Rows"]
 margin_top = 54.0
-margin_right = 772.0
+margin_right = 700.0
 margin_bottom = 104.0
 custom_constants/separation = 500
 
@@ -144,15 +148,14 @@ margin_right = 700.0
 
 [node name="Message" type="Label" parent="."]
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -175.0
-margin_top = -260.0
-margin_right = 175.0
-margin_bottom = -188.0
-custom_fonts/font = SubResource( 1 )
+margin_left = -198.5
+margin_top = 328.654
+margin_right = 198.5
+margin_bottom = 405.654
+custom_fonts/font = SubResource( 3 )
 text = "Game Over!"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -162,12 +165,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -59.5
-margin_top = 58.0
-margin_right = 59.5
-margin_bottom = 136.0
-custom_fonts/font = SubResource( 2 )
-text = "Exit"
+margin_left = -197.5
+margin_top = 161.239
+margin_right = 197.5
+margin_bottom = 239.239
+custom_fonts/font = SubResource( 5 )
+text = "Back to menu"
 __meta__ = {
 "_edit_use_anchors_": false
 }
