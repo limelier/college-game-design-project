@@ -104,6 +104,7 @@ position = Vector2( 1658.52, 1116.24 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
+
 [connection signal="health_updated" from="Player" to="." method="_on_Player_health_updated"]
 [connection signal="health_zero" from="Player" to="." method="game_over"]
 [connection signal="weapon_changed" from="Player" to="." method="_on_Player_weapon_changed"]

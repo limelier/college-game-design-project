@@ -7,8 +7,8 @@ var player_count = 1
 var game_running = false
 
 var health_pickup_chance = 0.05
-var weapon_pickup_chance = 0.01
-var power_pickup_chance = 0.005
+var weapon_pickup_chance = 0.02
+var power_pickup_chance = 0.01
 var HealthPickup = load("res://scenes/pickups/HealthPickup.tscn")
 var PowerPickup = load("res://scenes/pickups/PowerPickup.tscn")
 var WeaponPickup = load("res://scenes/pickups/WeaponPickup.tscn")

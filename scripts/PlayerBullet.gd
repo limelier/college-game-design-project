@@ -1,8 +1,10 @@
 extends Area2D
 
 var velocity = Vector2()
+var type
+var effect = preload('res://scenes/ProjEffect.tscn')
 export var speed = 500
-export var damage = 10
+export var damage = 18
 
 func _ready():
 	velocity = Vector2.UP.rotated(rotation) * speed
@@ -19,4 +21,8 @@ func _on_VisibilityNotifier2D_screen_exited():
 func _on_PlayerBullet_body_entered(body):
 	if body.has_method("damage"):
 		body.damage(damage)
+	var hit_effect = effect.instance()
+	get_parent().add_child(hit_effect)
+	hit_effect.play_hit_sound(type)
 	self.queue_free()
+	
